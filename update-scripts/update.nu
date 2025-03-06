@@ -4,13 +4,9 @@
 
 def get_latest_release [repo: string]: nothing -> string {
   try {
-    let json_data = http get $"https://api.github.com/repos/($repo)/releases"
+    lhttp get $"https://api.github.com/repos/($repo)/releases"
       | where prerelease == true
       | where tag_name == "twilight"
-    let tag_name = json_data
-      | get tag_name
-      | get 0
-    let id = json_data
       | get id
       | get 0
       | into string
