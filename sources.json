@@ -1,11 +1,11 @@
 {
-  "version": "twilight-2025-03-06",
+  "version": "Failed to fetch latest release, aborting: Name not found",
   "x86_64-linux": {
     "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-x86_64.tar.xz",
-    "hash": "sha256-NjFqAbjgCapv7PDd0cFNVjdW5avfRBJAMhqGIPWlrhk="
+    "hash": "sha256-B6EZj1UJOvU1KBEScoJTSPzWQ9sSt0VQni767IGvnFE="
   },
   "aarch64-linux": {
     "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-aarch64.tar.xz",
-    "hash": "sha256-g8LiAoQHqLTioDmIWPuDX00wVd5FfcAveFcFxTnLPQk="
+    "hash": "sha256-ygPDKgg73amkZj7Emnwu4XmpvPHFxypvIWVdyx1Trk0="
   }
 }
