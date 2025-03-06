@@ -13,6 +13,7 @@ def get_latest_release [repo: string]: nothing -> string {
     let id = json_data
       | get id
       | get 0
+      | into string
     concat $"$(tag_name)-$(id)"
   } catch { |err| $"Failed to fetch latest release, aborting: ($err.msg)" }
 }
