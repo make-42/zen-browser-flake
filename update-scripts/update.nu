@@ -4,11 +4,12 @@
 
 def get_latest_release [repo: string]: nothing -> string {
   try {
-	http get $"https://api.github.com/repos/($repo)/releases"
-	  | where prerelease == true
-	  | where tag_name == "twilight"
-	  | get tag_name
-	  | get 0
+    http get $"https://api.github.com/repos/($repo)/releases"
+      | where prerelease == true
+      | where tag_name == "twilight"
+      | get tag_name, id
+      | get 0
+      | concat $"$(tag_name)-$(id)"
   } catch { |err| $"Failed to fetch latest release, aborting: ($err.msg)" }
 }
 
@@ -19,20 +20,19 @@ def get_nix_hash [url: string]: nothing -> string  {
 export def generate_sources []: nothing -> record {
   let tag = get_latest_release "zen-browser/desktop"
   let prev_sources: record = open ./sources.json
-  let date = (date now | format date "%Y-%m-%d")
 
-  if $"($tag)-($date)" == $prev_sources.version {
+  if $tag == $prev_sources.version {
 	# everything up to date
-  	return {
-  	  prev_tag: $"($tag)-($date)"
-  	  new_tag: $"($tag)-($date)"
-  	}
+	return {
+	  prev_tag: $tag
+	  new_tag: $tag
+	}
   }
 
   let x86_64_url = $"https://github.com/zen-browser/desktop/releases/download/($tag)/zen.linux-x86_64.tar.xz"
   let aarch64_url = $"https://github.com/zen-browser/desktop/releases/download/($tag)/zen.linux-aarch64.tar.xz"
   let sources = {
-	version: $"($tag)-($date)"
+	version: $tag
 	x86_64-linux: {
 	  url:  $x86_64_url
 	  hash: (get_nix_hash $x86_64_url)
@@ -46,7 +46,7 @@ export def generate_sources []: nothing -> record {
   echo $sources | save --force "sources.json"
 
   return {
-    new_tag: $"($tag)-($date)"
+    new_tag: $tag
     prev_tag: $prev_sources.version
   }
 }
