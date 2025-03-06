@@ -4,12 +4,16 @@
 
 def get_latest_release [repo: string]: nothing -> string {
   try {
-    http get $"https://api.github.com/repos/($repo)/releases"
+    let json_data = http get $"https://api.github.com/repos/($repo)/releases"
       | where prerelease == true
       | where tag_name == "twilight"
+    let tag_name = json_data
+      | get tag_name
       | get 0
-      | get tag_name, id
-      | concat $"$(tag_name)-$(id)"
+    let id = json_data
+      | get id
+      | get 0
+    concat $"$(tag_name)-$(id)"
   } catch { |err| $"Failed to fetch latest release, aborting: ($err.msg)" }
 }
 
