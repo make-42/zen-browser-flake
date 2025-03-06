@@ -7,8 +7,8 @@ def get_latest_release [repo: string]: nothing -> string {
     http get $"https://api.github.com/repos/($repo)/releases"
       | where prerelease == true
       | where tag_name == "twilight"
-      | get tag_name, id
       | get 0
+      | get tag_name, id
       | concat $"$(tag_name)-$(id)"
   } catch { |err| $"Failed to fetch latest release, aborting: ($err.msg)" }
 }
