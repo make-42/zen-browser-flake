@@ -1,5 +1,5 @@
 {
-  "version": "Twilight build - 1.12.3t (2025-05-08 at 14:44:44)",
+  "version": "Failed to fetch latest release, aborting: Network failure",
   "x86_64-linux": {
     "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-x86_64.tar.xz",
     "hash": "sha256-ETKpWn0yt02UM2odGZaYEVdi4y6F9RJW7m4vNyXPqAs="
