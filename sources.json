@@ -1,11 +1,11 @@
 {
-  "version": "Failed to fetch latest release, aborting: Row number too large (empty content).",
+  "version": "Failed to fetch latest release, aborting: Network failure",
   "x86_64-linux": {
     "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-x86_64.tar.xz",
-    "hash": "sha256-SswB5twzkGn4EoG+ApN1xKeY0p3CexBO6aSyW9Jrw4I="
+    "hash": "sha256-i+UaydN7cRKgcRXMNmIlESD77JfakGG7HICufXFGxTU="
   },
   "aarch64-linux": {
     "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-aarch64.tar.xz",
-    "hash": "sha256-vqyssmdPkQYQJa/oHlKDXR61mpwy3O1garxYIaqVc8A="
+    "hash": "sha256-Hj9m8nXzwnnQqXRknFmBLbKvn28cizKqn/Jn+QkhbFY="
   }
 }
